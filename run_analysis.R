@@ -42,7 +42,7 @@ stat <- Total[,c(1:2,sort(c(grep(".mean().",names(Total)), grep(".std().",names(
 stat$activity<- factor(stat$activity, levels=1:6,labels=as.character(activity[,2]))
 
 #== Avg for each variable, each activity, each subject
-summary <- summarize_each(group_by(stat, candidate,activity), funs(mean))
+summary <- summarize_each(group_by(stat[,c(-dim(stat)[2])], candidate,activity), funs(mean))
 write.table(summary,file = "summary.txt")
 
 }
